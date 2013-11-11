@@ -3,6 +3,6 @@ default:
   password: password
   host: ns-server.epita.fr
   port: 4242
-  location: Home
+  location: RubySoul
   
   
