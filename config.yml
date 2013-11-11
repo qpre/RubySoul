@@ -1,0 +1,7 @@
+default:
+  login: pre_q
+  password: wsjZ3csk
+  host: ns-server.epita.fr
+  port: 4242
+  
+  
