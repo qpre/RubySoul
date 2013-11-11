@@ -3,6 +3,10 @@ RubySoul
 
 A simple netsoul client written in Ruby.
 
+Disclaimer
+----------
+RubySoul is still in its early stages, it ain't ready yet for daily usage
+
 Requirements
 ------------
 
