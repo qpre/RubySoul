@@ -10,5 +10,6 @@ In order to use RubySoul, you'll need to have the Bundler gem installed
 
 To install it, simply run:
 
- gem install bundler
-
+```
+gem install bundler
+````
