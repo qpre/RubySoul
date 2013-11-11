@@ -1,4 +1,6 @@
+require 'yaml'
 require_relative 'RSConnector'
+require_relative 'RSConfig'
 
 # RubySoul:
 #
@@ -17,10 +19,8 @@ class RubySoul
   #   Initialises RbSouls' parameters
   #
   def initialize
-    @host = 'ns-server.epita.fr'
-    @port = 4242
+    puts 'Initializing context'
   end
-  
   
   # start :
   #
@@ -29,7 +29,7 @@ class RubySoul
   def start
     EM.run do
       sigHandler
-      EM.connect @host, @port, RSConnector
+      EM.connect RSConfig.instance.host, RSConfig.instance.port, RSConnector
     end
   end
   
@@ -63,6 +63,6 @@ end
 
 # Start me up !
 
-ns = RbSoul.new
+ns = RubySoul.new
 ns.start
 
