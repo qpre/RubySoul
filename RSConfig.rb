@@ -3,7 +3,7 @@ require 'singleton'
 class RSConfig
   include Singleton
   
-  attr_accessor :host, :port, :login, :password
+  attr_accessor :host, :port, :login, :password, :location
   
   def initialize
     loadConfig
@@ -19,6 +19,6 @@ class RSConfig
     # user related options
     @login    = config['default']['login']
     @password = config['default']['password']
+    @location = config['default']['location']
   end
-  
 end
