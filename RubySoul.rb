@@ -1,6 +1,6 @@
 require_relative 'RSConnector'
 
-# RbSoul:
+# RubySoul:
 #
 # This class is aimed to handle a socket connection to 
 # a NetSoul server.
@@ -10,7 +10,7 @@ require_relative 'RSConnector'
 # else
 #
 
-class RbSoul
+class RubySoul
   
   # Constructor :
   #
