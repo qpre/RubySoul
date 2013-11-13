@@ -4,6 +4,9 @@ require 'digest'
 
 class RSConnector < EM::Connection
   
+  # Constructor
+  #   inits connector to its default values
+  #
   def initialize
     @isAuthenticating = false
   end
@@ -49,7 +52,7 @@ class RSConnector < EM::Connection
   end
   
   # authenticationHandler :
-  #   handles authentication phase
+  #   handles NetSoul authentication phase
   #
   
   def authenticationHandler rep
@@ -63,12 +66,21 @@ class RSConnector < EM::Connection
     end
   end
   
+  # send_message :
+  #   a wrapper for EventMachines' send_data method
+  #   logs the message to be sent on the console, then
+  #   sends it.
+  #
   def send_message message
     message = "#{message}\n"
     puts "client << #{message}"
     send_data message
   end
   
+  # replyHash :
+  #   creates an hash compliying with NetSoul authentication
+  #   methods
+  #
   def replyHash
     puts "#{@hash}-#{@clientIP}/#{@clientPort}#{RSConfig.instance.location}"
     Digest::MD5.hexdigest "#{@hash}-#{@clientIP}/#{@clientPort}#{RSConfig.instance.password}"

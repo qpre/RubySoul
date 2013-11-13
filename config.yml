@@ -1,6 +1,6 @@
 default:
-  login: pre_q
-  password: wsjZ3csk
+  login: login
+  password: password
   host: ns-server.epita.fr
   port: 4242
   location: RubySoul
