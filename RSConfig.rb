@@ -5,10 +5,16 @@ class RSConfig
   
   attr_accessor :host, :port, :login, :password, :location
   
+  # Constructor :
+  #   loads config
+  #
   def initialize
     loadConfig
   end
   
+  # loadConfig :
+  #   loads config from config.yml
+  #
   def loadConfig
     config = YAML.load_file('config.yml')
     

@@ -3,6 +3,10 @@ require 'eventmachine'
 require 'digest'
 
 class RSConnector < EM::Connection
+  
+  def initialize
+    @isAuthenticating = false
+  end
 
   # receive_data :
   #
@@ -32,20 +36,30 @@ class RSConnector < EM::Connection
       @hash       = input[2]
       @clientIP   = input[3]
       @clientPort = input[4]
-      
-      message = "auth_ag ext_user none none"
 
-      send_message message
+      send_message "auth_ag ext_user none none"
     elsif (input[0] == 'rep')
-      responseHandler input
+      case input[1]
+      when '002'
+        authenticationHandler input
+      else
+        puts "unknown command : #{rep}"
+      end
     end
   end
   
-  def responseHandler rep
-    if (rep[1] == '002')
+  # authenticationHandler :
+  #   handles authentication phase
+  #
+  
+  def authenticationHandler rep
+    if @isAuthenticating == false
       puts "authenticating"
-      message = "ext_user_log #{RSConfig.instance.login} #{replyHash} #{RSConfig.instance.location} RubySoul"
-      send_message message
+      @isAuthenticating = true
+      send_message "ext_user_log #{RSConfig.instance.login} #{replyHash} #{RSConfig.instance.location} RubySoul"
+    else
+      puts 'user successfully authenticated'
+      @isAuthenticating = false
     end
   end
   
