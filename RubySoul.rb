@@ -63,6 +63,5 @@ end
 
 # Start me up !
 
-ns = RubySoul.new
-ns.start
+RubySoul.new.start
 
